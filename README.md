@@ -66,7 +66,7 @@ Explain the following things in README of Github
 
 # Preprocessing
 
-Enron email dataset was given as the main dataset for the take home challenge. From the raw email strings the content text was extracted using ```email``` package from python built-in library. Then I tokenized the emails to sentences and did some cleanup including stripping white text, taking sentences with more than 5 word length and also filtered based on some keywords like subject lines from email. Ultimately 5861325 individual sentences were extracted from 1.2 GB Enron dataset. [Spacy sentencizer](https://spacy.io/api/sentencizer/) was also attempted for more accurate sentence tokenization, but its pretty slow.
+Enron email dataset was given as the main dataset for the take home challenge. From the raw email strings the content text was extracted using ```email``` package from python built-in library. Then I tokenized the emails to sentences and did some cleanup including stripping white text, taking sentences with more than 5 word length and also filtered based on some keywords like subject lines from email. Ultimately 5861325 individual sentences were extracted from 1.2 GB Enron dataset. [Spacy sentencizer](https://spacy.io/api/sentencizer/) was also attempted for more accurate sentence tokenization, but its pretty slow. I also removed newline and tab characters.
 
 # Rule Based Model
 
@@ -77,9 +77,9 @@ keywords = ["find email","send email","respond","check","plan","create reminder"
             "send email","find email","make call","open setting","assign","deliver","suggest","order","request","create assignment","forward","tag","todo","call me","call us","give us a call","email"]
 ```
 
-Second idea is to use POS tagging to check if the sentence contains a verb and declaring it action sentence if it does have a verb. Spacy is used for pos tagging.  Verbs may have different forms e.g assigning/assigned/assignment, so we will lemmatize the sentences before POS tagging with Spacy.
+If there's a keyword present in the sentence we declare it as action sentence. If the sentence is a question even then it can be an action sentence, for example "Would you like to....?", but in this case we also validate that the sentence is legible and long instead of being something like "Sup?". This is the second rule.
 
-Another 
+For the third rule I initially considered extracting verb phrases, but there are way too many variations. So I used textacy's information extraction module to get the subject-verb-object triplets from the sentences ```textacy.extract.``subject_verb_object_triples``` . It gets results like "I, would like, suggest,..." after extracting triplets. So if the result is non empty we declare a sentence as actionable.
 
 
 
