@@ -51,12 +51,22 @@ Explain the following things in README of Github
 # To do 
 
 * [x] Extracting email content
-* [ ] Tokenizing emails to list of sentences
+* [x] Tokenizing emails to list of sentences
 * [ ] lemmatizing sentences
 * [ ] Making the list of keywords
 * [ ] Depending on the keywords making a dataset with labels set
 * [ ] Add code for downloading and preprocessing the data
 * [ ] Asking for labelled text from company
+
+# Requirements 
+
+* Spacy
+* Textacy
+* Pandas
+
+# Preprocessing
+
+Enron email dataset was given as the main dataset for the take home challenge. From the raw email strings the content text was extracted using ```email``` package from python built-in library. Then I tokenized the emails to sentences and did some cleanup including stripping white text, taking sentences with more than 5 word length and also filtered based on some keywords like subject lines from email. Ultimately 5861325 individual sentences were extracted from 1.2 GB Enron dataset. [Spacy sentencizer](https://spacy.io/api/sentencizer/) was also attempted for more accurate sentence tokenization, but its pretty slow.
 
 # Rule Based Model
 
@@ -67,7 +77,9 @@ keywords = ["find email","send email","respond","check","plan","create reminder"
             "send email","find email","make call","open setting","assign","deliver","suggest","order","request","create assignment","forward","tag","todo","call me","call us","give us a call","email"]
 ```
 
+Second idea is to use POS tagging to check if the sentence contains a verb and declaring it action sentence if it does have a verb. Spacy is used for pos tagging.  Verbs may have different forms e.g assigning/assigned/assignment, so we will lemmatize the sentences before POS tagging with Spacy.
 
+Another 
 
 
 
@@ -89,4 +101,5 @@ keywords = ["find email","send email","respond","check","plan","create reminder"
 
 # Challenges
 
-* Raw data had raw email strings only. Content had to be extracted from raw emails. Discarded other metadata because in the tagged dataset only tagged sentences will be given.
+* Raw data had raw email strings only. Content had to be extracted from raw emails. Discarded other metadata because in the tagged dataset only tagged sentences will be given.  
+* I first tried to tokenize the raw emails to sentences using spacy, but spacy sentence tokenizer is very slow so did it with basic split methods hardcoded. 
