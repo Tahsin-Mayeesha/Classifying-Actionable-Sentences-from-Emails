@@ -29,7 +29,7 @@ uvicorn app:app --reload
 
 # Scripts 
 
-* ```email_to_sentences.py``` converts enron email dataset to a pandas series object containing list of sentences. Description in [Preprocessing](#Preprocessing) section. 
+* ```email_to_sentences.py``` converts enron email dataset to a pandas series object containing list of sentences. Description in [Preprocessing](#Preprocessing) section. To run this script download the enron dataset from kaggle and put the ```emails.csv``` file under the data section.
 * ```rule_model.py``` has the rule based model.  Described in [Rule Based Model](#Rule-Based Model) section.
 * ```merge_huddle_data.py``` merges the given action items with the sentences I got from emails. For merging I first applied the rule based model to first five thousand sentences (after shuffling the data) of enron emails, then took only the items marked as non-actionable as negative input and the positive labels came from the data given to me. So after combining I had 3952 sentences in total, out of which 1250 were positive.
 * ```app.py``` has the fastapi app. Here the naive bayes, svm, logreg model were loaded as scikit-learn saved pipeline objects via joblib and the lstm model was saved as a h5 file. For the LSTM model I also had to save the tokenizer and some hyperparameters like the sequence length and truncation type for padding. The four options for the model are  : ```rule-based,naive bayes,svm,logreg``` . Since LSTM model showed best performance I kept the LSTM model as the default.
