@@ -2,7 +2,7 @@ import numpy as np # linear algebra
 import pandas as pd
 import email # for processing emails
 
-emails = pd.read_csv("enron-email-dataset/emails.csv")
+emails = pd.read_csv("data/enron-email-dataset/emails.csv")
 
 def get_content_from_email(message):
     """ Extracts content text from emails """
