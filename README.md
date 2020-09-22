@@ -1,4 +1,4 @@
-# takehome1
+# Classifying actionable sentences from email data
 
 ![](demo.png)
 
@@ -67,7 +67,7 @@ uvicorn app:app --reload
 >
 > ## Delivery
 >
-> Please create a **private** repository in Github and share it with git userid '**[huddlhire](https://github.com/huddlhire)**'. We ABSOLUTELY should be able to see your check-ins/commits from the beginning and NOT just a single commit at the end. Include instructions on how to run the project and set up the requirements. Kindly, ensure that the entire project is repeatable from scratch i.e. from raw data to the final model.
+> Please create a **private** repository in Github and share it with git userid x. We ABSOLUTELY should be able to see your check-ins/commits from the beginning and NOT just a single commit at the end. Include instructions on how to run the project and set up the requirements. Kindly, ensure that the entire project is repeatable from scratch i.e. from raw data to the final model.
 >
 >  
 >
@@ -81,7 +81,7 @@ uvicorn app:app --reload
 >
 >   4) Explain the challenges you've faced while building the model.
 >
-> For the access: Look at https://github.com/<your-user-id>/<your-repo-name>/settings/access. Invite https://www.github.com/huddlhire as a collaborator.
+> 
 >
 > 2. DO NOT upload the dataset to the repository. Your heuristic model should be runnable. i.e. either as:
 >
